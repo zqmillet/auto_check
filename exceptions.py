@@ -19,3 +19,9 @@ class BaseException(Exception):
             self.message.format(
                 **{key: value for key, value in self.__dict__.items() if not key == 'message'}
             )
+
+class InvalidValueError(BaseException):
+    pass
+
+class InvalidCheckerError(BaseException):
+    pass
