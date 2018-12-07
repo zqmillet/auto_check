@@ -38,4 +38,14 @@ class InvalidValueError(BaseException):
         self.function_name = function.__name__
 
 class InvalidCheckerError(BaseException):
-    pass
+    name = None
+    file_name = None
+    line_number = None
+    function_name = None
+    message = 'che checker of <{name}> is invalid, plaease see the definition of the function <{function}> in the file, line number {line_number}'
+
+    def __init__(self, name, function):
+        self.name = name
+        self.file_name = function.__code__.co_filename
+        self.line_number = function.__code__.co_firstlineno
+        self.function_name = function.__name__
