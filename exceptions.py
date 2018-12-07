@@ -42,7 +42,7 @@ class InvalidCheckerError(BaseException):
     file_name = None
     line_number = None
     function_name = None
-    message = 'che checker of <{name}> is invalid, plaease see the definition of the function <{function}> in the file, line number {line_number}'
+    message = 'che checker of <{name}> is invalid, plaease see the definition of the function <{function_name}> in the file, line number {line_number}'
 
     def __init__(self, name, function):
         self.name = name
