@@ -17,10 +17,10 @@ class BaseException(Exception):
             )
 
 class InvalidValueError(BaseException):
-    file_name = None
-    arguments = None
-    line_number = None
-    verb = None
+    file_name     = None
+    arguments     = None
+    line_number   = None
+    verb          = None
     function_name = None
 
     message = '{arguments} {verb} invalid, please see the definition of the function <{function_name}> in the file {file_name}, line {line_number}'
@@ -38,10 +38,11 @@ class InvalidValueError(BaseException):
         self.function_name = function.__name__
 
 class InvalidCheckerError(BaseException):
-    name = None
-    file_name = None
-    line_number = None
+    name          = None
+    file_name     = None
+    line_number   = None
     function_name = None
+
     message = 'che checker of <{name}> is invalid, plaease see the definition of the function <{function_name}> in the file, line number {line_number}'
 
     def __init__(self, name, function):
