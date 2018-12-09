@@ -1,5 +1,6 @@
 import functools
 import inspect
+import collections
 
 from exceptions import InvalidValueError, InvalidCheckerError
 
@@ -39,7 +40,7 @@ def auto_type_checker(function):
     return wrapper
 
 def check(name, value, checker, function):
-    if isinstance(checker, (tuple, list, set)):
+    if isinstance(checker, collections.Iterable):
         return True in [check(name, value, sub_checker, function) for sub_checker in checker]
     elif checker is inspect._empty:
         return True
