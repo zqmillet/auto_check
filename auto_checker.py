@@ -41,7 +41,9 @@ def auto_type_checker(function):
     return wrapper
 
 def check(name, value, checker, function):
-    if isinstance(checker, collections.Iterable):
+    if isinstance(checker, str):
+        return str(type(value)) == '<class \'{type}\'>'.format(type = checker)
+    elif isinstance(checker, collections.Iterable):
         return True in [check(name, value, sub_checker, function) for sub_checker in checker]
     elif checker is inspect._empty:
         return True
@@ -55,7 +57,7 @@ def check(name, value, checker, function):
             raise InvalidCheckerError(name, function)
         return result
 
-def testcase():
+def testcases():
     @auto_type_checker
     def add(a, b, c: (int, float), d: int) -> str:
         return a + b + c + d
@@ -71,7 +73,7 @@ def testcase():
             return self.base + a + b + c + d
 
     @auto_type_checker
-    def test3(x: int, y: (None, int) = None):
+    def test3(x: 'int', y: (None, int) = None):
         if y is None:
             y = 0
         return x + y
