@@ -5,7 +5,7 @@ import ast
 
 from exceptions import InvalidValueError, InvalidCheckerError
 
-def auto_type_checker(function):
+def auto_type_check(function):
     @functools.wraps(function)
     def wrapper(*args, **kwargs):
         # fetch the argument name list.
@@ -58,21 +58,21 @@ def check(name, value, checker, function):
         return result
 
 def testcases():
-    @auto_type_checker
+    @auto_type_check
     def add(a, b, c: (int, float), d: int) -> str:
         return a + b + c + d
 
-    @auto_type_checker
+    @auto_type_check
     def test(x: lambda x: x >= 0, y: list, z: str) -> str:
         return y[x] == z
 
     class Test():
         base = 1
-        @auto_type_checker
+        @auto_type_check
         def add(self, a, b, c: [int, float], d: int) -> lambda x: str(x):
             return self.base + a + b + c + d
 
-    @auto_type_checker
+    @auto_type_check
     def test3(x: 'int', y: (None, int) = None):
         if y is None:
             y = 0
