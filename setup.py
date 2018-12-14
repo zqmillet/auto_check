@@ -4,7 +4,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='auto_checker',
+    name='auto_check',
     version=1.0,
     description=(
         'a decorator can auto check the function arguments'
@@ -25,8 +25,6 @@ setup(
         'License :: OSI Approved :: BSD License',
         'Programming Language :: Python',
         'Programming Language :: Python :: Implementation',
-        'Programming Language :: Python :: 2',
-        'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
